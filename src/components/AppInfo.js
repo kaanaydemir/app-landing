@@ -19,7 +19,7 @@ export default function AppInfo({index}) {
   return (
     <>
       <div className={"flex-container flex gap-10"}>
-        <div>
+        <div className="slider-container">
           <Slider slideImages={data.images}/>
         </div>
         <div>

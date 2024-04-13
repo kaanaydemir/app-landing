@@ -11,9 +11,11 @@ function AppDetail(props) {
   const [otherApp, setOtherApp] = useState([]);
 
   useEffect(() => {
-    setApp(apps.find(app => app.appName === appName));
-    setOtherApp(apps.filter(app => app.appName !== appName));
-    console.log(app);
+    const currentApp = apps.find(app => app.appName === appName);
+    setApp(currentApp);
+    setOtherApp(apps);
+    document.title = `${currentApp.name} | tuwenti.com `;
+
   }, [app, appName]);
 
   if (!app) return (<div>Loading...</div>);
