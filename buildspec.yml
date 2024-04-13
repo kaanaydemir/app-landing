@@ -17,5 +17,6 @@ phases:
 artifacts:
   # include all files required to run the application
   files:
-    - "*/"
+    - "**/*"
+  discard-paths: no
   base-directory: "build"
