@@ -1,11 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import OtherApps from "../components/OtherApps";
+import {useParams} from "react-router-dom";
+import {apps} from "../data";
 
 function Home(props) {
+
+  const [app, setApp] = useState(null);
+
+  useEffect(() => {
+
+    setApp(apps);
+  }, [app]);
+
+
   useEffect(() => {
     document.title = "tuwenti.com";
+
   }, []);
+
+  if (!app) return (<div>Loading...</div>);
+
+
   return (
-    <div></div>
+    <OtherApps otherApps={app} />
   );
 }
 
