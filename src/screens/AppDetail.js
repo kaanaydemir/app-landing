@@ -14,7 +14,7 @@ function AppDetail(props) {
     const currentApp = apps.find(app => app.appName === appName);
     setApp(currentApp);
     setOtherApp(apps);
-    document.title = `${currentApp.name} | tuwenti.com `;
+    document.title = `${currentApp.name} | tuwenti22.com `;
 
   }, [app, appName]);
 
