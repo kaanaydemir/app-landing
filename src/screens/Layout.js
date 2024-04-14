@@ -7,7 +7,6 @@ export default function Layout() {
   return (
     <>
       <div id="main-content" className={"justify-center items-center flex flex-col"}>
-        <h1 className={"text-center text-4xl font-bold"}>App Info</h1>
         <Link to={"/"}>
           <Signature/>
         </Link>
