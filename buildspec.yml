@@ -15,7 +15,10 @@ phases:
       - npm run build
 
 artifacts:
-  # include all files required to run the application
   files:
-    - "**/*"
-  base-directory: "build"
+    - '**/*'
+  base-directory: 'build'
+
+cache:
+  paths:
+    - 'node_modules/**/*'
