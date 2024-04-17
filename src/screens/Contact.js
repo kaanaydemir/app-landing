@@ -53,7 +53,7 @@ function Contact() {
 
 
   const sendContact = async (data) => {
-    const url = 'http://localhost:8080/contact';
+    const url = 'http://deprem-istanbul-1465456880.eu-central-1.elb.amazonaws.com/contact';
     await post(url, data);
   }
 
