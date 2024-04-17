@@ -53,7 +53,7 @@ function Contact() {
 
 
   const sendContact = async (data) => {
-    const url = 'http://deprem-istanbul-1465456880.eu-central-1.elb.amazonaws.com/contact';
+    const url = 'https://n1n6i9b6r2.execute-api.eu-central-1.amazonaws.com/prod/earthquake/contact';
     await post(url, data);
   }
 
