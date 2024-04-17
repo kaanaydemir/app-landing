@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import {apps} from "../data";
 import ContactFormLabel from "../components/contact/ContactFormLabel";
 import ReCAPTCHA from "react-google-recaptcha";
-import ContactErrorMessage from "../components/contact/ContactErrorMessage";
+import ContactFormMessage from "../components/contact/ContactFormMessage";
 import {post} from "../util/http";
 import {useMutation} from "@tanstack/react-query";
 
@@ -25,7 +25,7 @@ function Contact() {
   }, [app]);
 
 
-  const { register, handleSubmit, setValue,watch, formState: { errors },clearErrors } = useForm({
+  const { register, handleSubmit, setValue,watch, formState: { errors },resetField,reset } = useForm({
     resolver: zodResolver(schema),
     mode:"onTouched",
     resetOptions: {
@@ -35,6 +35,8 @@ function Contact() {
   });
   const [captchaValue, setCaptchaValue] = useState(null);
   const [captchaError, setCaptchaError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [formError, setFormError] = useState(false);
   const captcha = watch('captcha');
 
   const onCaptchaChange = value => {
@@ -45,7 +47,7 @@ function Contact() {
   const displayFirstError = () => {
     for (const key in errors) {
       if (errors[key]) {
-        return <ContactErrorMessage message={errors[key].message} />;
+        return <ContactFormMessage message={errors[key].message} />;
       }
     }
     return null;
@@ -61,10 +63,13 @@ function Contact() {
   const {mutate, isPending,isError,error} = useMutation({
     mutationFn: sendContact,
     onError: (error) => {
-      console.error(error);
+      setSuccess('An error occurred while sending your message please try again later');
+      setFormError(true);
     },
     onSuccess: () => {
-      alert('Contact form submitted successfully');
+      setSuccess('Your message has been sent successfully we will get back to you soon');
+      setFormError(false);
+      reset();
     }
   })
 
@@ -80,7 +85,8 @@ function Contact() {
     <form onSubmit={handleSubmit(onSubmit)} className={"w-2/6 min-w-96 max-w-96"}>
       <div className="mb-5">
         {displayFirstError()}
-        {captchaError && <ContactErrorMessage message={captchaError} />}
+        {captchaError && <ContactFormMessage message={captchaError} />}
+        {success && <ContactFormMessage message={success} isError={formError} />}
       </div>
       <h1 className={"text-white font-bold text-4xl mb-10"}>Contact Us</h1>
       <div className="mb-5">
