@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #231715;
+  background-color: #152321;
 }
 
 .cedarville-cursive-regular {
@@ -45,7 +45,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
   overflow: hidden;
 }
 
@@ -79,4 +78,10 @@ body {
   .text-center-sm {
     text-align: center;
   }
+}
+
+
+.error-messages p {
+  color: red;
+  font-weight: bold;
 }

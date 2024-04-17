@@ -1,10 +1,10 @@
 import 'react-slideshow-image/dist/styles.css'
-import Slider from "./Slider";
+import Slider from "../Slider";
 import AppDescription from "./AppDescription";
 import AppLinks from "./AppLinks";
 import AppHeader from "./AppHeader";
 import {useEffect, useState} from "react";
-import {apps} from "../data";
+import {apps} from "../../data";
 
 export default function AppInfo({index}) {
 

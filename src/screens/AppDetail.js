@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import AppInfo from "../components/AppInfo";
+import AppInfo from "../components/detail/AppInfo";
 import {useParams} from "react-router-dom";
 import {apps} from "../data";
 import OtherAppItem from "../components/OtherAppItem";

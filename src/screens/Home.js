@@ -14,7 +14,7 @@ function Home(props) {
 
 
   useEffect(() => {
-    document.title = "tuwenti.com";
+    document.title = "Home | tuwenti.com";
 
   }, []);
 
