@@ -11,8 +11,8 @@ export const apps = [
       "• Her depremin yeri, derinliği, büyüklüğü, mesafesi ve kaynağı hakkında detaylı bilgiler edinin."
 
     ],
-    appStoreUrl : "https://itunes.apple.com/us/app/my-earthquake-alerts-news/id975709372?ls=1&mt=8&at=1l3v8U4",
-    googlePlayUrl : "https://play.google.com/store/apps/details?id=host",
+    appStoreUrl : "https://apps.apple.com/tr/app/deprem-bildirimleri-t%C3%BCrkiye/id6480133853?platform=iphone",
+    googlePlayUrl : "",
     images : [
       {
         url: '../deprem/1.jpg',
@@ -39,12 +39,12 @@ export const apps = [
     appName:"image-to-xls",
     icon : "../image-convertor/icon.png",
     name : "Sheet Ai",
-    description : "Sheet Ai uygulaması ile resimlerinizi Excel dosyasına dönüştürebilirsiniz.",
+    description : "Sheet Ai is an image to Excel converter app that allows you to convert your images into an Excel file.",
     descriptionDetail:[
-      "• Resimlerinizi Excel dosyasına dönüştürün.",
-      "• Dönüştürdüğünüz Excel dosyasını paylaşın.",
-      "• Dönüştürdüğünüz Excel dosyasını indirin.",
-      "• Dönüştürdüğünüz Excel dosyasını silebilirsiniz."
+      "• Convert your images into an Excel file.",
+      "• Share the converted Excel file.",
+      "• Download the converted Excel file.",
+      "• Delete the converted Excel file."
     ],
     appStoreUrl : "https://apps.apple.com/us/app/sheet-ai/id6478458862",
     images : [

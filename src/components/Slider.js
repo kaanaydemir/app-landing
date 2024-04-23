@@ -1,5 +1,5 @@
 import React from 'react';
-import {Fade, Slide, Zoom} from "react-slideshow-image";
+import {Slide} from "react-slideshow-image";
 
 function Slider({slideImages}) {
 
