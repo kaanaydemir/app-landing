@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {get} from "../util/http";
 
+
 function Privacy(props) {
 
   const [html, setHtml] = useState()

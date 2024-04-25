@@ -8,12 +8,17 @@ import 'flowbite';
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "./util/http";
 import Privacy from "./screens/Privacy";
+import TermsOfService from "./screens/TermsOfService";
 
 
 const router = createBrowserRouter([
   {
     path: '/privacy',
     element: <Privacy/>,
+  },
+  {
+    path: '/terms-of-service',
+    element: <TermsOfService/>,
   },
   {
     path: '/',
