@@ -7,9 +7,14 @@ import Contact from "./screens/Contact";
 import 'flowbite';
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "./util/http";
+import Privacy from "./screens/Privacy";
 
 
 const router = createBrowserRouter([
+  {
+    path: '/privacy',
+    element: <Privacy/>,
+  },
   {
     path: '/',
     element: <Layout/>,
