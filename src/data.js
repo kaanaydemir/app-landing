@@ -32,7 +32,9 @@ export const apps = [
       {
         url: '../deprem/6.jpg',
       },
-    ]
+    ],
+    privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/deprem-bildirimleri-turkiye.html"
+
   },
   {
     "id": 1,
@@ -63,6 +65,7 @@ export const apps = [
       {
         url: '../image-convertor/5.jpg',
       }
-    ]
+    ],
+    privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/sheetai/sheet-ai-privacy-policy.html"
   }
 ]
