@@ -32,6 +32,7 @@
 }
 .container{
     background-color: #ffffff;
+    width: 100%;
 }
 .container li{
     font-style: italic;
@@ -46,8 +47,4 @@
 .container ul{
     list-style-type: disc;
     margin-left: 50px;
-}
-.container{
-    padding: 20px;
-    width: 100%;
 }
