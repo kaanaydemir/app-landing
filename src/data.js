@@ -32,6 +32,9 @@ export const apps = [
       {
         url: '../deprem/6.jpg',
       },
+      {
+        url: '../deprem/7.jpg',
+      },
     ],
     privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/deprem-bildirimleri-turkiye.html"
 
