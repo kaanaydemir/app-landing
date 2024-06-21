@@ -70,5 +70,36 @@ export const apps = [
       }
     ],
     privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/sheetai/sheet-ai-privacy-policy.html"
+  },
+  {
+    "id": 2,
+    appName:"find-imposter",
+    icon : "../chat-ai/icon.png",
+    name : "Find Imposter",
+    description : "Find Imposter is a game that allows you to find the imposter among the crewmates.",
+    descriptionDetail:[
+      "• Find the imposter among the crewmates.",
+      "• Highly intelligent Ai.",
+      "• Share the game with your friends.",
+    ],
+    appStoreUrl : "https://apps.apple.com/app/find-imposter/id6504367325",
+    images : [
+      {
+        url: '../chat-ai/1.jpeg',
+      },
+      {
+        url: '../chat-ai/10.jpeg',
+      },
+      {
+        url: '../chat-ai/3.jpeg',
+      },
+      {
+        url: '../chat-ai/8.jpeg',
+      },
+      {
+        url: '../chat-ai/9.jpeg',
+      }
+    ],
+    privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/chatai/privacy-policy.html"
   }
 ]
