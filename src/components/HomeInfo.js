@@ -6,7 +6,7 @@ function HomeInfo({apps}) {
   const [slideImages, setSlideImages] = useState([]);
 
   useEffect(() => {
-    const initialSlideImages = apps.map(app => {
+    const initialSlideImages = apps.filter(x => x.status ).map(app => {
       return {
         url: app.images[0].url,
       };

@@ -2,6 +2,7 @@ export const apps = [
   {
     "id": 0,
     appName:"deprem-bildirimleri-turkiye",
+    status: false,
     icon : "../deprem/deprem-icon.png",
     name : "Deprem Bildirimleri Türkiye",
     description : "Deprem Bildirimleri Türkiye uygulaması ile Türkiye'de meydana gelen depremler hakkında anlık bildirim alabilirsiniz.",
@@ -42,6 +43,7 @@ export const apps = [
   {
     "id": 1,
     appName:"image-to-xls",
+    status: true,
     icon : "../image-convertor/icon.png",
     name : "Sheet Ai",
     description : "Sheet Ai is an image to Excel converter app that allows you to convert your images into an Excel file.",
@@ -74,6 +76,7 @@ export const apps = [
   {
     "id": 2,
     appName:"find-imposter",
+    status: true,
     icon : "../chat-ai/icon.png",
     name : "Find Imposter",
     description : "Find Imposter is a game that allows you to find the imposter among the crewmates.",
@@ -99,6 +102,36 @@ export const apps = [
       {
         url: '../chat-ai/9.jpeg',
       }
+    ],
+    privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/chatai/privacy-policy.html"
+  },
+  {
+    "id": 3,
+    appName:"logo-ai",
+    status: true,
+    icon : "../logo-ai/icon.png",
+    name : "Vincent: Create Logo,Art,Dream",
+    description : "Vincent is an app that allows you to create a logo for your brand using Ai.",
+    descriptionDetail:[
+      "• Create a logo for your brand using Ai.",
+      "• Share the logo with your friends.",
+      "• More than 30+ styles.",
+      "• Download the logo.",
+    ],
+    appStoreUrl : "https://apps.apple.com/app/find-imposter/id6504367325",
+    images : [
+      {
+        url: '../logo-ai/1.jpeg',
+      },
+      {
+        url: '../logo-ai/2.jpeg',
+      },
+      {
+        url: '../logo-ai/3.jpeg',
+      },
+      {
+        url: '../logo-ai/4.jpeg',
+      },
     ],
     privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/chatai/privacy-policy.html"
   }
