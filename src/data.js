@@ -118,7 +118,7 @@ export const apps = [
       "• More than 30+ styles.",
       "• Download the logo.",
     ],
-    appStoreUrl : "https://apps.apple.com/app/find-imposter/id6504367325",
+    appStoreUrl : "https://apps.apple.com/app/id6602546043?platform=iphone",
     images : [
       {
         url: '../logo-ai/1.jpeg',
@@ -133,6 +133,6 @@ export const apps = [
         url: '../logo-ai/4.jpeg',
       },
     ],
-    privacyPolicyUrl : "https://tuwenti-documents.s3.eu-central-1.amazonaws.com/chatai/privacy-policy.html"
+    privacyPolicyUrl : "../logo-ai/logo-ai-privacy-policy.html"
   }
 ]
