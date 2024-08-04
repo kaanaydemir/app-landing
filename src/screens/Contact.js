@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import { object, string } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import {object, string} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {useForm} from 'react-hook-form';
 import {apps} from "../data";
 import ContactFormLabel from "../components/contact/ContactFormLabel";
 import ReCAPTCHA from "react-google-recaptcha";
 import ContactFormMessage from "../components/contact/ContactFormMessage";
-import {post} from "../util/http";
 import {useMutation} from "@tanstack/react-query";
+import {supabase} from "../util/supabase";
 
 
 const schema = object({
@@ -16,6 +16,7 @@ const schema = object({
   app: string().min(1, "Please select an app you're contacting about"),
   message: string().min(1, "Please enter a valid message"),
 });
+
 function Contact() {
 
   const [app, setApp] = useState(null);
@@ -25,9 +26,9 @@ function Contact() {
   }, [app]);
 
 
-  const { register, handleSubmit, setValue,watch, formState: { errors },resetField,reset } = useForm({
+  const {register, handleSubmit, setValue, watch, formState: {errors}, resetField, reset} = useForm({
     resolver: zodResolver(schema),
-    mode:"onTouched",
+    mode: "onTouched",
     resetOptions: {
       keepErrors: false,
       keepDirty: false,
@@ -41,13 +42,13 @@ function Contact() {
 
   const onCaptchaChange = value => {
     setCaptchaValue(value);
-    setValue('captcha', value, { shouldValidate: true });
+    setValue('captcha', value, {shouldValidate: true});
     setCaptchaError(null);
   };
   const displayFirstError = () => {
     for (const key in errors) {
       if (errors[key]) {
-        return <ContactFormMessage message={errors[key].message} />;
+        return <ContactFormMessage message={errors[key].message}/>;
       }
     }
     return null;
@@ -55,12 +56,22 @@ function Contact() {
 
 
   const sendContact = async (data) => {
-    const url = 'https://n1n6i9b6r2.execute-api.eu-central-1.amazonaws.com/prod/earthquake/contact';
-    await post(url, data);
+    await supabase
+      .from('contact')
+      .insert([
+        {
+          name: data.name,
+          email: data.email,
+          app: data.app,
+          message: data.message
+        },
+      ])
+      .select();
+
   }
 
 
-  const {mutate, isPending,isError,error} = useMutation({
+  const {mutate, isPending, isError, error} = useMutation({
     mutationFn: sendContact,
     onError: (error) => {
       setSuccess('An error occurred while sending your message please try again later');
@@ -85,8 +96,8 @@ function Contact() {
     <form onSubmit={handleSubmit(onSubmit)} className={"w-2/6 min-w-96 max-w-96"}>
       <div className="mb-5">
         {displayFirstError()}
-        {captchaError && <ContactFormMessage message={captchaError} />}
-        {success && <ContactFormMessage message={success} isError={formError} />}
+        {captchaError && <ContactFormMessage message={captchaError}/>}
+        {success && <ContactFormMessage message={success} isError={formError}/>}
       </div>
       <h1 className={"text-white font-bold text-4xl mb-10"}>Contact Us</h1>
       <div className="mb-5">
