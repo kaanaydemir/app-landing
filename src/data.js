@@ -76,7 +76,7 @@ export const apps = [
   {
     "id": 2,
     appName:"find-imposter",
-    status: true,
+    status: false,
     icon : "../chat-ai/icon.png",
     name : "Find Imposter",
     description : "Find Imposter is a game that allows you to find the imposter among the crewmates.",
@@ -121,16 +121,16 @@ export const apps = [
     appStoreUrl : "https://apps.apple.com/app/id6602546043?platform=iphone",
     images : [
       {
-        url: '../logo-ai/1.jpeg',
+        url: '../logo-ai/1.png',
       },
       {
-        url: '../logo-ai/2.jpeg',
+        url: '../logo-ai/2.png',
       },
       {
-        url: '../logo-ai/3.jpeg',
+        url: '../logo-ai/3.png',
       },
       {
-        url: '../logo-ai/4.jpeg',
+        url: '../logo-ai/4.png',
       },
     ],
     privacyPolicyUrl : "../logo-ai/logo-ai-privacy-policy.html"
