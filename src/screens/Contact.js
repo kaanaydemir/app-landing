@@ -4,7 +4,6 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 import {apps} from "../data";
 import ContactFormLabel from "../components/contact/ContactFormLabel";
-import ReCAPTCHA from "react-google-recaptcha";
 import ContactFormMessage from "../components/contact/ContactFormMessage";
 import {useMutation} from "@tanstack/react-query";
 import {supabase} from "../util/supabase";
@@ -66,7 +65,18 @@ function Contact() {
           message: data.message
         },
       ])
-      .select();
+      .select()
+      .throwOnError()
+      .then(({data, error}) => {
+        if (error) {
+          setSuccess('An error occurred while sending your message please try again later');
+          setFormError(true);
+        } else {
+          setSuccess('Your message has been sent successfully we will get back to you soon');
+          setFormError(false);
+          reset();
+        }
+      })
 
   }
 
@@ -85,10 +95,6 @@ function Contact() {
   })
 
   const onSubmit = data => {
-    if (!captchaValue) {
-      setCaptchaError('Please complete the captcha');
-      return;
-    }
     mutate(data);
   };
 
@@ -129,14 +135,6 @@ function Contact() {
                   rows="4"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
       </div>
-
-      <div className={"mb-5"}>
-        <ReCAPTCHA
-          sitekey="6Ld_AL4pAAAAANjibqgv4M8FRjfoGrL8TY5eC_G_"  // Replace with your reCAPTCHA site key
-          onChange={onCaptchaChange}
-        />
-      </div>
-
       <button type="submit"
               className="w-full text-white transition ease-in-out hover:scale-110 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
         Send

@@ -2,7 +2,7 @@ export const apps = [
   {
     "id": 0,
     appName:"deprem-bildirimleri-turkiye",
-    status: false,
+    status: true,
     icon : "../deprem/deprem-icon.png",
     name : "Deprem Bildirimleri Türkiye",
     description : "Deprem Bildirimleri Türkiye uygulaması ile Türkiye'de meydana gelen depremler hakkında anlık bildirim alabilirsiniz.",
@@ -108,7 +108,7 @@ export const apps = [
   {
     "id": 3,
     appName:"logo-ai",
-    status: true,
+    status: false,
     icon : "../logo-ai/icon.png",
     name : "Vincent: Create Logo,Art,Dream",
     description : "Vincent is an app that allows you to create a logo for your brand using Ai.",
