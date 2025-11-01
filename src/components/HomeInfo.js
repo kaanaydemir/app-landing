@@ -1,25 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import Slider from "./Slider";
+import CustomCarousel from "./CustomCarousel";
 
 function HomeInfo({apps}) {
 
   const [slideImages, setSlideImages] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const initialSlideImages = apps.filter(x => x.status ).map(app => {
       return {
         url: app.images[0].url,
       };
     });
     setSlideImages(initialSlideImages);
-  }, []);
+  }, []);*/
+
+  useEffect(() => {
+    const initialSlideImages = apps.filter(x => x.status ).map(app => app.images[0].url);
+    setSlideImages(initialSlideImages);
+  }, [apps]);
 
   if(!slideImages) return (<div>Loading...</div>);
 
 
   return (
     <div className={"flex justify-center"}>
-      <div className={"hidden sm:block"}><Slider slideImages={slideImages}/></div>
+      {/*<div className={"hidden sm:block"}><Slider slideImages={slideImages}/></div>*/}
+      <div className={"hidden sm:block"}><CustomCarousel  images={slideImages}/></div>
       <div className={"text-center sm:text-left text-white sm:ml-20 ml-0 w-full sm:w-2/6"}>
         <h1 className={"font-bold text-5xl kanit-bold"}>Tuwenti.com</h1>
         <p className={"my-4 kanit-semibold"}>Elevating Horizons, Building Dreams</p>

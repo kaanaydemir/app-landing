@@ -1,0 +1,35 @@
+/* Carousel container */
+.carousel-container {
+    position: relative;
+    width: 300px; /* Adjust to the desired width */
+    height: 600px; /* Adjust to the desired height */
+    margin: auto;
+    overflow: hidden;
+    /* Pink and Blue Gradient Background */
+    background: linear-gradient(135deg, #ff69b4 0%, #1e90ff 100%);
+    border-radius: 30px; /* Rounded corners */
+}
+
+/* Image container (with iPhone frame) */
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
