@@ -6,7 +6,6 @@ import {apps} from "../data";
 import ContactFormLabel from "../components/contact/ContactFormLabel";
 import ContactFormMessage from "../components/contact/ContactFormMessage";
 import {useMutation} from "@tanstack/react-query";
-import {supabase} from "../util/supabase";
 
 
 const schema = object({
@@ -19,13 +18,14 @@ const schema = object({
 function Contact() {
 
   const [app, setApp] = useState(null);
+  const [captchaError, setCaptchaError] = useState(null);
 
   useEffect(() => {
     setApp(apps);
-  }, [app]);
+  }, []);
 
 
-  const {register, handleSubmit, setValue, watch, formState: {errors}, resetField, reset} = useForm({
+  const {register, handleSubmit, setValue, formState: {errors}, reset} = useForm({
     resolver: zodResolver(schema),
     mode: "onTouched",
     resetOptions: {
@@ -33,17 +33,10 @@ function Contact() {
       keepDirty: false,
     },
   });
-  const [captchaValue, setCaptchaValue] = useState(null);
-  const [captchaError, setCaptchaError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [formError, setFormError] = useState(false);
-  const captcha = watch('captcha');
 
-  const onCaptchaChange = value => {
-    setCaptchaValue(value);
-    setValue('captcha', value, {shouldValidate: true});
-    setCaptchaError(null);
-  };
+
   const displayFirstError = () => {
     for (const key in errors) {
       if (errors[key]) {
@@ -54,36 +47,40 @@ function Contact() {
   };
 
 
+  // Yeni: Supabase yerine verilen API'ye POST atacak fonksiyon
   const sendContact = async (data) => {
-    await supabase
-      .from('contact')
-      .insert([
-        {
-          name: data.name,
-          email: data.email,
-          app: data.app,
-          message: data.message
-        },
-      ])
-      .select()
-      .throwOnError()
-      .then(({data, error}) => {
-        if (error) {
-          setSuccess('An error occurred while sending your message please try again later');
-          setFormError(true);
-        } else {
-          setSuccess('Your message has been sent successfully we will get back to you soon');
-          setFormError(false);
-          reset();
-        }
-      })
+    const payload = {
+      name: data.name,
+      email: data.email,
+      appName: data.app,
+      message: data.message,
+    };
 
+    try {
+      const res = await fetch('https://3sl5yzz2mh.execute-api.eu-central-1.amazonaws.com/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const contentType = res.headers.get('content-type') || '';
+      const json = contentType.includes('application/json') ? await res.json() : null;
+
+      if (!res.ok) {
+        const msg = (json && json.message) ? json.message : `API responded with status ${res.status}`;
+        return Promise.reject(new Error(msg));
+      }
+
+      return json;
+    } catch (err) {
+      return Promise.reject(err);
+    }
   }
 
 
-  const {mutate, isPending, isError, error} = useMutation({
+  const {mutate} = useMutation({
     mutationFn: sendContact,
-    onError: (error) => {
+    onError: () => {
       setSuccess('An error occurred while sending your message please try again later');
       setFormError(true);
     },
@@ -124,8 +121,8 @@ function Contact() {
                 {...register('app')}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="">Select an App</option>
-          {app && app.map((app, index) => (
-            <option key={index} value={app.appName}>{app.name}</option>
+          {app?.map((a) => (
+            <option key={a.appName} value={a.appName}>{a.name}</option>
           ))}
         </select>
       </div>
